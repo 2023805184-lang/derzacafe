@@ -1,0 +1,29 @@
+ :root { 
+            --primary-blue: #0f143c; 
+            --accent-gold: #d4a373; 
+            --glass-white: rgba(255, 255, 255, 0.05); 
+        }
+
+
+ /* Tombol Back - Konsisten */
+        .btn-back { 
+            position: fixed; 
+            top: 30px; 
+            right: 30px; 
+            color: white; 
+            text-decoration: none; 
+            font-size: 10px; 
+            border: 1px solid rgba(212, 163, 115, 0.5); 
+            padding: 8px 20px; 
+            border-radius: 4px; 
+            z-index: 100; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+        }
+

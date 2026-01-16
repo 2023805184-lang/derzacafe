@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu | Derza Cafe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary-blue: #060918; 
+            --accent-gold: #c5a059; 
+            --text-gray: rgba(255, 255, 255, 0.5);
+        }
+
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--primary-blue); 
+            font-family: 'Poppins', sans-serif; 
+            color: white; 
+            overflow: hidden; 
+        }
+
+        .main-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* Bahagian Kiri - Navigasi */
+        .nav-section {
+            width: 35%;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid rgba(197, 160, 89, 0.1);
+            background: linear-gradient(to bottom, #060918, #0a112b);
+        }
+
+        .logo-area h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 12px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Mengecilkan senarai kategori di sebelah kiri */
+        .category-list {
+            margin: 40px 0;
+        }
+
+        .cat-link {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px; /* Mengecilkan tulisan navigasi */
+            font-weight: 300;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.3);
+            margin: 18px 0;
+            transition: 0.5s ease;
+            cursor: pointer;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .cat-link:hover, .cat-link.active {
+            color: var(--accent-gold);
+            transform: translateX(10px);
+            font-weight: 500;
+        }
+
+        .footer-note {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.3;
+        }
+
+        /* Bahagian Kanan - Menu Display */
+        .content-section {
+            width: 65%;
+            padding: 80px 100px;
+            overflow-y: auto;
+            background: #080b1d;
+        }
+
+        .content-section::-webkit-scrollbar { width: 3px; }
+        .content-section::-webkit-scrollbar-thumb { background: var(--accent-gold); }
+
+        /* Jarak yang lebih jauh antara Header dan list */
+        .menu-header {
+            margin-bottom: 80px; /* Tambah jarak supaya tak nampak dekat sangat */
+            animation: fadeInDown 1s forwards;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 30px;
+        }
+
+        .menu-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px; /* Mengecilkan tajuk New Arrivals dll */
+            margin: 0;
+            color: var(--accent-gold);
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .sub-cat-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* Menu Items */
+        .item-row {
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: space-between;
+            animation: fadeInUp 0.8s both;
+        }
+
+        .item-info { width: 100%; }
+
+        .item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin: 0 0 6px 0;
+            color: #f0f0f0;
+            letter-spacing: 0.5px;
+        }
+
+        .item-description {
+            font-size: 11.5px;
+            font-weight: 200;
+            color: var(--text-gray);
+            line-height: 1.8;
+            max-width: 85%;
+        }
+
+        /* Back Button */
+        .btn-exit {
+            position: fixed; top: 40px; right: 40px;
+            z-index: 100; color: white; text-decoration: none;
+            font-size: 9px; letter-spacing: 3px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 10px 20px; border-radius: 2px; transition: 0.4s;
+            background: rgba(6, 9, 24, 0.5);
+        }
+
+        .btn-exit:hover { background: var(--accent-gold); color: black; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .main-container { flex-direction: column; overflow-y: auto; }
+            .nav-section, .content-section { width: 100%; height: auto; padding: 40px 20px; }
+            .nav-section { border-right: none; border-bottom: 1px solid rgba(197, 160, 89, 0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="btn-exit">BACK TO HOME</a>
+
+    <div class="main-container">
+        <div class="nav-section">
+            <div class="logo-area">
+                <h1>Derza Cafe</h1>
+            </div>
+
+            <div class="category-list">
+                <a class="cat-link active" onclick="updateMenu('newmenu', this)">01. New Arrivals</a>
+                <a class="cat-link" onclick="updateMenu('steak', this)">02. Prime Steaks</a>
+                <a class="cat-link" onclick="updateMenu('rice', this)">03. Rice Specialties</a>
+                <a class="cat-link" onclick="updateMenu('pasta', this)">04. Artisan Pasta</a>
+                <a class="cat-link" onclick="updateMenu('western', this)">05. Western Grill</a>
+                <a class="cat-link" onclick="updateMenu('snacks', this)">06. Lite Bites</a>
+                <a class="cat-link" onclick="updateMenu('dessert', this)">07. Sweet Cravings</a>
+                <a class="cat-link" onclick="updateMenu('beverage', this)">08. Liquid Gold</a>
+            </div>
+
+            <div class="footer-note">EST. 2026 // KUALA LUMPUR</div>
+        </div>
+
+        <div class="content-section" id="scrollArea">
+            <div id="menuInject">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        const menuData = {
+            newmenu: { "Latest Creations": [ { name: "Derza Biryani Ayam Bawang", desc: "Authentic and aromatic spice of Biryani Rice served with spicy and sweetness from caramelized onion from Ayam Bawang. Comes with delicate curry, freshmade acar timun and crispy papadoms." },
+
+                { name: "Chicken Curry", desc: "Peranakan Classic chicken slow cooked in spicy creamy curry gravy with potatoes, basmathi rice and sambal." },
+
+                { name: "Spicy Coconut Milk Beef Stew", desc: "Premium beef stewed in spiced coconut milk, served with fragrant rice." },
+
+                { name: "Spicy Tamarind Mackerel", desc: "Mackerel stewed in a tangy and spicy tamarind broth." },
+
+                { name: "Chicken Katsu with Butter Rice", desc: "Crispy breaded chicken served over fragrant buttered basmathi rice." },
+
+                { name: "Buttermilk Chicken with Butter Rice", desc: "Creamy buttermilk chicken served with signature butter rice." },
+
+                { name: "Chicken Katsu with Garlic Fried Rice", desc: "Crispy chicken served with aromatic garlic-infused fried rice." },
+
+                { name: "Buttermilk Chicken Pasta", desc: "Spaghetti tossed in a rich buttermilk sauce with fried chicken." },
+
+                { name: "Chocolate Waffle", desc: "Crunchy waffle drizzled with premium melted chocolate." },
+
+                { name: "Blueberry Waffle", desc: "Crunchy waffle served with fresh blueberry jam." },
+
+                { name: "Strawberry Waffle", desc: "Crunchy waffle served with sweet strawberry topping." },
+
+                { name: "Salted Egg Shrimps with Butter Rice", desc: "Succulent shrimps in savory salted egg yolk sauce." },
+
+                { name: "Roti Teatab", desc: "Classic toasted bread with kaya and cold butter." },
+
+                { name: "Chicken Tender", desc: "Crispy breaded chicken strips served with cheesy dip." },
+
+                { name: "Derza Swedish Meatball", desc: "Meatballs served with creamy brown sauce and jam." },
+
+                { name: "Derza Grilled Chicken", desc: "Perfectly grilled chicken leg with black pepper sauce." }
+
+            ],
+
+ },
+            steak: { "Premium Cuts": [ { name: "Derza Minute Steak", desc: "Three slices of thin, tender striploin steak grilled to perfection and served with aromatic black pepper sauce." }, { name: "Steak Black Angus", desc: "Premium Black Angus beef known for its marbling, served with creamy mashed potatoes and seasonal vegetables." }, { name: "Steak Wagyu Aust MBS 4/5", desc: "High-grade Australian Wagyu with a Melt-in-mouth texture, served with our signature sides." } ] },
+            rice: { "Fragrant Rice": [ { name: "Chicken Katsu Butter Rice", desc: "Golden-brown breaded chicken cutlet served over a bed of fragrant, rich buttered rice." }, { name: "Nasi Lemak Derza", desc: "Fragrant coconut milk rice served with spicy sambal, crispy anchovies, toasted peanuts, and hard-boiled egg." }, { name: "Butter Rice", desc: "Fluffy basmathi rice sautéed with premium butter and aromatic herbs." }, { name: "Buttermilk Chicken Rice", desc: "Crispy chicken pieces tossed in a rich, spicy, and creamy curry leaf buttermilk sauce." } ] },
+            pasta: { "Italian Soul": [ { name: "Alfredo Chicken", desc: "Creamy Alfredo pasta made with velvety cream sauce and succulent chicken, served with your choice of Spaghetti of fettuccine. " }, { name: "Carbonara Chicken", desc: "Rich and creamy white sauce pasta with tender chicken pieces and parmesan cheese." }, { name: "Beef Bolognese", desc: "Hearty slow-cooked minced beef in a tangy and savory tomato herb sauce." }, { name: "Aglio Olio", desc: "Classic pasta tossed in olive oil, toasted garlic, and chili flakes." } ] },
+            western: { "Global Favorites": [ { name: "Grilled Chicken", desc: "Juicy grilled chicken leg basted with black pepper sauce, served with crispy potato wedges." }, { name: "Chicken Schnitzel", desc: "Thin, crispy breaded chicken breast served with a side of fresh garden salad." }, { name: "Lamb Chop", desc: "Succulent grilled lamb shoulder served with black pepper sauce and classic sides." }, { name: "Fish & Chips", desc: "Deep-fried battered fish fillet served with golden fries and tangy tartar sauce." }, { name: "Ramen Char Siu", desc: "Comforting Japanese-style noodles in savory broth topped with tender chicken char siu." }, { name: "Mushroom Soup with Garlic Bread", desc: "Homemade creamy wild mushroom soup served with toasted, buttery garlic bread." } ] },
+            snacks: { "Savory Bites": [ { name: "Chicken Tender", desc: "Hand-breaded crispy chicken strips served with Thousand Island and Cheezy dip." }, { name: "Buffalo Wings", desc: "Deep-fried chicken wings tossed in a spicy and tangy Buffalo-style glaze." }, { name: "Half Boiled Eggs", desc: "Two perfectly prepared kampung eggs, served with white pepper and soy sauce." }, { name: "Fries", desc: "Classic golden shoestring fries, lightly salted and served with chili sauce." }, { name: "Nuggets", desc: "Crispy chicken nuggets, a favorite for quick snacking." }, { name: "Potato Wedges", desc: "Thick-cut seasoned potato wedges, soft on the inside and crunchy outside." } ] },
+            dessert: { 
+                "Cakes": [ { name: "Hazelnut Cheese Cake", desc: "Rich cream cheese blended with toasted hazelnuts." }, { name: "Chocolate Indulgence Cake", desc: "Rich layers of premium chocolate and velvety cream." }, { name: "Batik Chocolate Indulgence Cake", desc: "A fusion of traditional batik textures and rich chocolate." }, { name: "Tiramisu Cake", desc: "Premium espresso-soaked layers with mascarpone." } ],
+                "Pastry": [ { name: "Croissant Butter", desc: "Flaky, buttery, and golden-brown French pastry baked fresh daily." }, { name: "Salted Egg Creamy Croissant", desc: "Luxurious croissant filled with savory salted egg yolk cream." }, { name: "Croissant Chocolate Lava", desc: "A buttery delight with a rich chocolate core." }, { name: "Hazelnut Croissant Lava", desc: "Perfectly baked with a nutty hazelnut chocolate surprise." }, { name: "Sausage Puff", desc: "Savory pastry filled with premium chicken sausage." }, { name: "Brownies Kunafa Chocolate", desc: "Unique blend of crunchy kunafa and fudgy chocolate brownies." }, { name: "Brownies Kunafa Matcha", desc: "Artisan matcha brownies topped with crunchy kunafa." } ]
+            },
+            
+                beverage: {
+                "Coffee": [
+                    { name: "Espresso", desc: "Pure intense coffee shot." },
+                    { name: "Espresso Macchiato", desc: "Espresso with a dollop of foam." },
+                    { name: "Espresso Con Panna", desc: "Espresso topped with whipped cream." },
+                    { name: "Cafe Bombon", desc: "Espresso with sweetened condensed milk." },
+                    { name: "Freddo Espresso", desc: "Iced shaken espresso." },
+                    { name: "Espresso Soda", desc: "Refreshing coffee with sparkling soda." },
+                    { name: "Americano / Long Black", desc: "Rich espresso with hot water." },
+                    { name: "Aerocano", desc: "Aerated iced Americano for a creamy texture." },
+                    { name: "Caffe Cortado", desc: "Espresso cut with a small amount of warm milk." },
+                    { name: "Caffe Cappuccino", desc: "Classic balance of espresso, steam milk, and foam." },
+                    { name: "Freddo Cappuccino", desc: "Iced cappuccino topped with cold milk foam." },
+                    { name: "Cocoa Cappuccino", desc: "Cappuccino with a hint of chocolate." },
+                    { name: "Dark Cocoa Cappuccino", desc: "Bold cappuccino with rich dark cocoa." },
+                    { name: "Latte Macchiato", desc: "Marked milk with a shot of espresso." },
+                    { name: "Caramel Macchiato", desc: "Vanilla latte topped with caramel drizzle." },
+                    { name: "Salted Caramel Macchiato", desc: "Perfect balance of sweet and salty caramel." },
+                    { name: "Caffe Latte / Flat White", desc: "Smooth espresso with velvety steamed milk." },
+                    { name: "Spanish Latte", desc: "Sweetened creamy latte." },
+                    { name: "Vanilla Latte", desc: "Classic latte with premium vanilla syrup." },
+                    { name: "Caramel Latte", desc: "Sweetened with buttery caramel." },
+                    { name: "Salted Caramel Latte", desc: "Creamy latte with salted caramel twist." },
+                    { name: "Hazelnut Latte", desc: "Latte with a nutty hazelnut finish." },
+                    { name: "Butterscotch Latte", desc: "Rich and buttery sweet latte." },
+                    { name: "Mocha", desc: "Combination of espresso and chocolate." },
+                    { name: "Dark Mocha", desc: "Intense dark chocolate and espresso." },
+                    { name: "Ristretto Bianco (4 Shots)", desc: "Bold and short shots of espresso with milk." }
+                ],
+                "Tea": [
+                    { name: "Butterscotch Tea Latte", desc: "Creamy tea with butterscotch flavor." },
+                    { name: "Caramel Tea Latte", desc: "Tea latte with sweet caramel." },
+                    { name: "Derza Black Tea", desc: "Our signature premium black tea." },
+                    { name: "Derza Lemon Tea", desc: "Refreshing tea with a zing of lemon." },
+                    { name: "Derza Tea Latte", desc: "Classic smooth milk tea." },
+                    { name: "Derza Teh Tarik", desc: "Traditional Malaysian pulled tea." },
+                    { name: "Hazelnut Tea Latte", desc: "Nutty flavored creamy tea." },
+                    { name: "Salted Caramel Tea Latte", desc: "Tea latte with a salted caramel hint." },
+                    { name: "Vanilla Tea Latte", desc: "Smooth tea with aromatic vanilla." }
+                ],
+                " Matcha": [
+                    { name: "Matcha Latte", desc: "Premium Japanese green tea with milk." },
+                    { name: "Matcha Strawberry", desc: "Matcha latte with fresh strawberry puree." },
+                    { name: "Matcha Tea", desc: "Pure ceremonial grade matcha tea." }
+                ],
+                "Flavoured Milk": [
+                    { name: "Rosel Milk", desc: "Unique floral milk infusion." },
+                    { name: "Derza Milk", desc: "Our signature fresh milk blend." },
+                    { name: "Butterscotch Milk", desc: "Sweet and buttery fresh milk." },
+                    { name: "Caramel Milk", desc: "Creamy milk with caramel syrup." },
+                    { name: "Hazelnut Milk", desc: "Fresh milk with a nutty hazelnut taste." },
+                    { name: "Salted Caramel Milk", desc: "Sweet and salty milk treat." },
+                    { name: "Vanilla Milk", desc: "Creamy milk with vanilla bean flavor." },
+                    { name: "Evergreen Milk", desc: "Refreshing green-themed milk blend." },
+                    { name: "Strawberry Milk", desc: "Fresh milk with sweet strawberry." }
+                ],
+                "Chocolate": [
+                    { name: "Classic Chocolate", desc: "Rich and creamy chocolate drink." },
+                    { name: "Classic Butterscotch Chocolate", desc: "Chocolate with a buttery sweet twist." },
+                    { name: "Classic Caramel Chocolate", desc: "Sweet caramel blended with chocolate." },
+                    { name: "Classic Hazelnut Chocolate", desc: "Perfect pairing of hazelnut and chocolate." },
+                    { name: "Classic Salted Caramel Chocolate", desc: "Chocolate with salted caramel notes." },
+                    { name: "Classic Vanilla Chocolate", desc: "Chocolate with a hint of vanilla." },
+                    { name: "Butterscotch Chocolate", desc: "Premium butterscotch chocolate blend." },
+                    { name: "Caramel Chocolate", desc: "Rich chocolate with caramel drizzle." },
+                    { name: "Derza Signature Chocolate", desc: "Our secret recipe for the ultimate chocolate." },
+                    { name: "Hazelnut Chocolate", desc: "Indulgent nutty chocolate drink." },
+                    { name: "Salted Caramel Chocolate", desc: "A savory-sweet chocolate experience." }
+                ],
+                 "Soda": [
+                    { name: "Strawberry Soda", desc: "Sparkling soda with strawberry." },
+                    { name: "Rosel Soda", desc: "Refreshing floral sparkling soda." },
+                    { name: "Derza Soda", desc: "Our signature sparkling refresher." },
+                    { name: "Evergreen Soda", desc: "Crisp and cool green soda." },
+                    { name: "Sarsi Soda", desc: "Classic sarsaparilla flavor." },
+                    { name: "Magic Soda", desc: "A mysterious and colorful sparkling drink." },
+                    { name: "Lemon Soda", desc: "Zesty and bubbly lemon soda." }
+                ]
+            }
+        };
+
+        function updateMenu(category, element) {
+            document.querySelectorAll('.cat-link').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            const container = document.getElementById('menuInject');
+            const scrollArea = document.getElementById('scrollArea');
+            scrollArea.scrollTop = 0;
+            
+            let html = '';
+            const data = menuData[category];
+
+            for (const subCat in data) {
+                html += `
+                    <div class="menu-header">
+                        <h2>${category === 'newmenu' ? 'New Arrivals' : category.toUpperCase()}</h2>
+                        <span class="sub-cat-label">${subCat}</span>
+                    </div>
+                `;
+
+                data[subCat].forEach((item, index) => {
+                    html += `
+                        <div class="item-row" style="animation-delay: ${index * 0.05}s">
+                            <div class="item-info">
+                                <p class="item-name">${item.name}</p>
+                                <p class="item-description">${item.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            container.innerHTML = html;
+        }
+
+        window.onload = () => {
+            updateMenu('newmenu', document.querySelector('.cat-link'));
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Derza Cafe | Experience Santorini</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* 1. Reset & Base Style */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('images/backgroundsecond.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* 2. Navigasi & Social Media (Eksklusif) */
+        .nav-wrapper {
+            text-align: right;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px); /* Kesan kaca nipis */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper a {
+            color: #161D57;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 10px 15px;
+            display: inline-block;
+            vertical-align: middle;
+            transition: 0.4s ease;
+        }
+
+        .nav-wrapper a:hover {
+            color: #d4a373; /* Warna gold bila hover */
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            margin-left: 15px;
+            transition: 0.4s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .social-icon:hover {
+            transform: rotate(15px) scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        /* 3. Hero Card (Glassmorphism Effect) */
+        .hero-card {
+            /* Warna biru gelap dengan blur di belakang */
+            background: rgba(28, 38, 70, 0.75);
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Garisan halus keliling kotak */
+            
+            max-width: 700px;
+            margin: 80px auto; /* Centerkan secara automatik */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            
+            /* Animasi masuk */
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-card h1 {
+            color: #fef7e8; 
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Garis bawah tajuk */
+        .hero-card h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d4a373;
+            margin: 15px auto;
+        }
+
+        .hero-card p {
+            line-height: 1.8;
+            font-size: 16px;
+            font-weight: 300;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        /* 4. Animasi Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 5. Gambar Header & Footer Responsive */
+        .full-width-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="images/headerindex.png" class="full-width-img" style="height: 120px;"> 
+
+    <div class="nav-wrapper">
+        <a href="menu.html">MENU</a>
+        <a href="opentime.html">OPEN TIME</a>
+        <a href="location.html">LOCATION</a>
+        <a href="cafe_gallery.html">CAFE GALLERY</a>
+        <a href="contact.html">CONTACT</a>
+
+        <a href="https://www.instagram.com/derzacafe24?igsh=a2ozOGZtaDZ2MjZs" target="_blank">
+            <img src="images/instagram.png" alt="Instagram" class="social-icon">
+        </a>
+
+        <a href="https://www.facebook.com/share/1DeG2UUFeh/?mibextid=wwXIfr" target="_blank">
+            <img src="images/facebook.png" alt="Facebook" class="social-icon">
+        </a>
+    </div>
+
+    <div class="hero-card">
+        <h1 style="text-align: center;">Cafe About</h1>
+        <p>Derza Cafe is a unique café concept inspired by the breathtaking beauty of Santorini Island, Greece known for its iconic white-and-blue architecture, peaceful seaside atmosphere, and romantic Mediterranean charm.</p>
+        
+        <p>At Derza Cafe, we proudly serve a thoughtfully curated menu featuring Western and Eastern fusion dishes, combining the best flavors from both culinary worlds. Each plate is prepared with passion and creativity.</p>
+
+        <p>More than just a place to eat, it is a space to connect, relax, and create beautiful moments. Join us for an unforgettable dining experience where comfort and inspiration meet.</p>
+    </div>
+
+    <div class="hero-card" style="max-width: 600px;">
+        <h1 style="text-align: center;">Cafe Vision</h1>
+        <p style="font-size: 18px; font-style: italic;">
+            "To provide legendary customer service and delicious cuisines to all customers in a comfortable fine-dining environment."
+        </p>
+    </div>
+
+    <img src="images/contactderza.png" class="full-width-img" style="height: 500px; margin-top: 100px;">
+
+</body>
+</html>

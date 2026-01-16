@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Opening Hours | Derza Cafe</title>
+    <link rel="stylesheet" type="text/css" href="css/group.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            background-color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background dengan Overlay Gelap */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(15, 20, 60, 0.85), rgba(15, 20, 60, 0.95)), 
+                        url('images/backgroundsecond.png'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Card Style */
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: var(--accent-gold);
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            letter-spacing: 5px;
+            opacity: 0.5;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        /* Time Rows */
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .day {
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .time {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .closed {
+            color: #ff4b4b;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* Status Badge */
+        #statusBadge {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 30px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .open-now { background: rgba(76, 175, 80, 0.1); color: #4CAF50; border: 1px solid #4CAF50; }
+        .closed-now { background: rgba(255, 75, 75, 0.1); color: #ff4b4b; border: 1px solid #ff4b4b; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="btn-back">BACK TO HOME</a>
+
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <div class="info-card">
+            <h1>Opening Hours</h1>
+            <span class="subtitle">Derza Cafe Experience</span>
+
+            <div class="time-row">
+                <span class="day">Saturday — Thursday</span>
+                <span class="time">1:00 PM - 11:00 PM</span>
+            </div>
+
+            <div class="time-row">
+                <span class="day">Friday</span>
+                <span class="time closed">CLOSED</span>
+            </div>
+
+            <div id="statusBadge">Checking Status...</div>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0: Sunday, 5: Friday
+            const hour = now.getHours();
+            const badge = document.getElementById('statusBadge');
+
+            const isFriday = (day === 5);
+            const isOpenTime = (hour >= 13 && hour < 23);
+
+            if (!isFriday && isOpenTime) {
+                badge.className = "open-now";
+                badge.innerText = "● Open Now";
+            } else {
+                badge.className = "closed-now";
+                badge.innerText = isFriday ? "● Closed for Friday" : "● Closed Now";
+            }
+        }
+
+        updateStatus();
+        setInterval(updateStatus, 60000);
+    </script>
+</body>
+</html>
