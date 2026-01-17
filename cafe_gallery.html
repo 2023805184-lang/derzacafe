@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Animasi Slide Masuk untuk Keseluruhan Page */
         .page-reveal {
             animation: slideUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
@@ -29,7 +28,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Navigasi Back */
         .btn-back { 
             position: fixed; top: 30px; right: 30px; 
             color: white; text-decoration: none; font-size: 10px; 
@@ -66,7 +64,6 @@
             margin: 20px auto;
         }
 
-        /* Gallery Grid */
         .gallery-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -82,17 +79,15 @@
             overflow: hidden;
             border: 1px solid rgba(212, 163, 115, 0.1);
             border-radius: 4px;
-            opacity: 0; /* Mula dengan invisible untuk animasi */
+            opacity: 0; 
             transform: translateY(30px);
             animation: itemAppear 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
 
-        /* Animasi gambar muncul satu-satu */
         @keyframes itemAppear {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Delay untuk setiap gambar (Staggered effect) */
         .gallery-item:nth-child(1) { animation-delay: 0.1s; }
         .gallery-item:nth-child(2) { animation-delay: 0.2s; }
         .gallery-item:nth-child(3) { animation-delay: 0.3s; }
@@ -168,4 +163,5 @@
     </div>
 
 </body>
+
 </html>
