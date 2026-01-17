@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
-        /* 1. Reset & Base Style */
+        
         body {
             margin: 0;
             padding: 0;
@@ -22,12 +22,11 @@
             overflow-x: hidden;
         }
 
-        /* 2. Navigasi & Social Media (Eksklusif) */
         .nav-wrapper {
             text-align: right;
             padding: 20px 50px;
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px); /* Kesan kaca nipis */
+            backdrop-filter: blur(5px); 
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -46,7 +45,7 @@
         }
 
         .nav-wrapper a:hover {
-            color: #d4a373; /* Warna gold bila hover */
+            color: #d4a373; 
             transform: translateY(-2px);
         }
 
@@ -64,22 +63,19 @@
             filter: brightness(1.2);
         }
 
-        /* 3. Hero Card (Glassmorphism Effect) */
         .hero-card {
-            /* Warna biru gelap dengan blur di belakang */
             background: rgba(28, 38, 70, 0.75);
             backdrop-filter: blur(12px); 
             -webkit-backdrop-filter: blur(12px);
             
             padding: 60px;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Garisan halus keliling kotak */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
             
             max-width: 700px;
-            margin: 80px auto; /* Centerkan secara automatik */
+            margin: 80px auto; 
             box-shadow: 0 25px 50px rgba(0,0,0,0.4);
             
-            /* Animasi masuk */
             animation: fadeInUp 1.2s ease-out;
         }
 
@@ -93,7 +89,6 @@
             position: relative;
         }
 
-        /* Garis bawah tajuk */
         .hero-card h1::after {
             content: '';
             display: block;
@@ -112,7 +107,6 @@
             margin-bottom: 20px;
         }
 
-        /* 4. Animasi Keyframes */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -124,7 +118,6 @@
             }
         }
 
-        /* 5. Gambar Header & Footer Responsive */
         .full-width-img {
             width: 100%;
             height: auto;
@@ -173,4 +166,5 @@
     <img src="images/contactderza.png" class="full-width-img" style="height: 500px; margin-top: 100px;">
 
 </body>
+
 </html>
