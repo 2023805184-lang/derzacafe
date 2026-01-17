@@ -4,8 +4,6 @@
             --glass-white: rgba(255, 255, 255, 0.05); 
         }
 
-
- /* Tombol Back - Konsisten */
         .btn-back { 
             position: fixed; 
             top: 30px; 
@@ -26,4 +24,5 @@
             background: var(--accent-gold);
             color: var(--primary-blue);
         }
+
 
